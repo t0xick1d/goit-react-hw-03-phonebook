@@ -12,6 +12,13 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parseContact = JSON.parse(contacts);
+
+    this.setState({ contacts: parseContact });
+  }
+
   addNumber = objNumber => {
     const { id, name, number } = objNumber;
     if (this.state.contacts.filter(e => e.name === name).length !== 0) {
@@ -19,6 +26,10 @@ class App extends Component {
       return;
     }
     this.setState(prevState => {
+      localStorage.setItem(
+        'contacts',
+        JSON.stringify([{ id, name, number }, ...prevState.contacts])
+      );
       return {
         contacts: [{ id, name, number }, ...prevState.contacts],
       };
@@ -35,6 +46,7 @@ class App extends Component {
       contact => contact.id !== id
     );
     this.setState({ contacts: newListContact });
+    localStorage.setItem('contacts', JSON.stringify(newListContact));
   };
 
   render() {
