@@ -15,8 +15,10 @@ class App extends Component {
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
     const parseContact = JSON.parse(contacts);
-
-    this.setState({ contacts: parseContact });
+    console.log(parseContact);
+    if (parseContact) {
+      this.setState({ contacts: parseContact });
+    }
   }
 
   addNumber = objNumber => {
