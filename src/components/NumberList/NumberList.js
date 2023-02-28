@@ -8,17 +8,18 @@ function NumberList({ list = [], deleteContact }) {
     <>
       <div className={style.title}>Contacts</div>
       <ul className={style.list}>
-        {list.map(e => {
-          return (
-            <ItemList
-              key={e.id}
-              id={e.id}
-              name={e.name}
-              number={e.number}
-              deleteContact={deleteContact}
-            />
-          );
-        })}
+        {list.length > 0 &&
+          list.map(e => {
+            return (
+              <ItemList
+                key={e.id}
+                id={e.id}
+                name={e.name}
+                number={e.number}
+                deleteContact={deleteContact}
+              />
+            );
+          })}
       </ul>
     </>
   );
