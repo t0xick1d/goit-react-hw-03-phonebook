@@ -51,9 +51,11 @@ class App extends Component {
 
   render() {
     const normilizeFilter = this.state.filter.toLowerCase();
-    const visibleContact = this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normilizeFilter)
-    );
+    const visibleContact = this.state.contacts
+      ? this.state.contacts.filter(contact =>
+          contact.name.toLowerCase().includes(normilizeFilter)
+        )
+      : '';
 
     return (
       <div className={style.App__container}>
