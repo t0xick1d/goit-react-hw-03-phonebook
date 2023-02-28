@@ -3,7 +3,7 @@ import ItemList from './ItemList';
 
 import style from './NumberList.module.css';
 
-function NumberList({ list, deleteContact }) {
+function NumberList({ list = [], deleteContact }) {
   return (
     <>
       <div className={style.title}>Contacts</div>
