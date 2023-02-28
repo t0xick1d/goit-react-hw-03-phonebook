@@ -21,7 +21,11 @@ class App extends Component {
 
   addNumber = objNumber => {
     const { id, name, number } = objNumber;
-    if (this.state.contacts.filter(e => e.name === name).length !== 0) {
+    console.log(this.state.contacts);
+    if (
+      this.state.contacts.length > 0 &&
+      this.state.contacts.filter(e => e.name === name).length !== 0
+    ) {
       alert(`${name}is already in contacts.`);
       return;
     }
